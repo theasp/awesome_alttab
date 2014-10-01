@@ -52,8 +52,8 @@ local function preview()
    local h = w * 0.75  -- widget height
    local textboxHeight = 30
 
-   local x = -preview_wbox.border_width
-   local y = (screen[mouse.screen].geometry.height - h - textboxHeight) / 2
+   local x = screen[mouse.screen].geometry.x - preview_wbox.border_width
+   local y = screen[mouse.screen].geometry.y + (screen[mouse.screen].geometry.height - h - textboxHeight) / 2
    preview_wbox:geometry({x = x, y = y, width = W, height = h + textboxHeight})
 
    -- create a list that holds the clients to preview, from left to right
@@ -324,8 +324,9 @@ local function switch(dir, alt, tab, shift_tab)
    -- as long as the user is alt-tabbing:
    keygrabber.run(
       function (mod, key, event)  
-	 -- Stop alt-tabbing when the alt-key is released
-	 if key == alt and event == "release" then
+	 -- Stop alt-tabbing when the alt-key is released, or escape
+	 -- pressed
+	 if (key == alt and event == "release") or key == "Escape" then
 	    preview_wbox.visible = false
 	    preview_live_timer:stop()
 	    previewDelayTimer:stop()
