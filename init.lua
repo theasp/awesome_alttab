@@ -38,10 +38,9 @@ local altTabIndex = 1
 
 local source = string.sub(debug.getinfo(1,'S').source, 2)
 local path = string.sub(source, 1, string.find(source, "/[^/]*$"))
-local noicon = path .. "noicon.png"
+local noicon = gears.surface.load(path .. "noicon.png")
 
 local function preview()
-
 
    local preview_widgets = {}
    
@@ -131,7 +130,7 @@ local function preview()
 	    -- Icons
 	    local icon
 	    if c.icon == nil then 
-	       icon = gears.surface(gears.surface.load(noicon))
+	       icon = gears.surface(noicon)
 	    else
 	       icon = gears.surface(c.icon)
 	    end
@@ -330,6 +329,11 @@ local function switch(dir, alt, tab, shift_tab)
 	    preview_wbox.visible = false
 	    preview_live_timer:stop()
 	    previewDelayTimer:stop()
+	    keygrabber.stop()
+
+	    if key == "Escape" then
+	       return
+	    end
 	    
 	    -- Raise clients in order to restore history
 	    local c
@@ -352,8 +356,6 @@ local function switch(dir, alt, tab, shift_tab)
 		  altTabTable[i].minimized = true
 	       end
 	    end
-
-	    keygrabber.stop()
 
       	    -- Move to next client on each Tab-press
 	 elseif (key == tab or key == "Right") and event == "press" then
