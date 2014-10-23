@@ -29,11 +29,11 @@ function plugin.settingsDefault(settings)
 end
 
 function plugin.startup(awesomever, settings)
-   local alttab = require('alttab')
+   alttab = require('alttab')
 
    plugin.settingsDefault(settings)
 
-   plugin.functions["alttab"].func = function()
+   plugin.functions["alttab.start"].func = function()
       alttab(1, settings.modifier, settings.next, settings.prev)
    end
 end
