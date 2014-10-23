@@ -1,8 +1,5 @@
 local plugin = {}
 
-local misc = require('crappy.misc')
-local pluginManager = require("crappy.pluginManager")
-
 plugin.name = 'Familar Alt-Tab'
 plugin.description = 'Integrate familiar Alt-Tab functionality in Awesome WM'
 plugin.id = 'alttab'
