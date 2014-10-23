@@ -90,6 +90,7 @@ function plugin.buildUi(window, settings, log)
          left_attach = 0, top_attach = nextRow(),
          Gtk.Label {
             label = '_Modifier key name:',
+            halign = 'END',
             use_underline = true,
             mnemonic_widget = modifierEntry
          },
@@ -102,6 +103,7 @@ function plugin.buildUi(window, settings, log)
          left_attach = 0, top_attach = nextRow(),
          Gtk.Label {
             label = '_Next window key name:',
+            halign = 'END',
             use_underline = true,
             mnemonic_widget = nextEntry
          },
@@ -114,6 +116,7 @@ function plugin.buildUi(window, settings, log)
          left_attach = 0, top_attach = nextRow(),
          Gtk.Label {
             label = '_Previous window key name:',
+            halign = 'END',
             use_underline = true,
             mnemonic_widget = prevEntry
          },
