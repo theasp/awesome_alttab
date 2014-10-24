@@ -31,8 +31,6 @@ end
 function plugin.startup(awesomever, settings)
    alttab = require('alttab')
 
-   plugin.settingsDefault(settings)
-
    plugin.functions["alttab.start"].func = function()
       alttab(1, settings.modifier, settings.next, settings.prev)
    end
@@ -41,8 +39,6 @@ end
 function plugin.buildUi(window, settings, log)
    local lgi = require 'lgi'
    local Gtk = lgi.require('Gtk')
-
-   plugin.settingsDefault(settings)
 
    local modifierEntry = Gtk.Entry {
       hexpand = true,
