@@ -1,16 +1,20 @@
-local plugin = {}
+local lgi = require('lgi')
 
-plugin.name = 'Familar Alt-Tab'
-plugin.description = 'Integrate familiar Alt-Tab functionality in Awesome WM'
-plugin.id = 'alttab'
-plugin.requires = {}
-plugin.provides = {"crappy.functions.global"}
-plugin.functions = {
-   ["alttab.start"] = {
-      class = "global",
-      description = "Integrate familiar Alt-Tab functionality in Awesome WM",
-   },
+local plugin = {
+   name = 'Familar Alt-Tab',
+   description = 'Integrate familiar Alt-Tab functionality in Awesome WM',
+   id = 'alttab',
+   requires = {},
+   provides = {"crappy.functions.global"},
+   functions = {
+      ["alttab.start"] = {
+         class = "global",
+         description = "Integrate familiar Alt-Tab functionality in Awesome WM",
+      },
+   }
 }
+
+local log = lgi.log.domain(plugin.id)
 
 function plugin.settingsDefault(settings)
    if settings.modifier == nil then
@@ -36,8 +40,7 @@ function plugin.startup(awesomever, settings)
    end
 end
 
-function plugin.buildUi(window, settings, log)
-   local lgi = require 'lgi'
+function plugin.buildUi(window, settings)
    local Gtk = lgi.require('Gtk')
 
    local modifierEntry = Gtk.Entry {
