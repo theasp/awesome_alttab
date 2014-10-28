@@ -1,5 +1,3 @@
-local lgi = require('lgi')
-
 local plugin = {
    name = 'Familar Alt-Tab',
    description = 'Integrate familiar Alt-Tab functionality in Awesome WM',
@@ -35,8 +33,6 @@ local plugin = {
       prev = "ISO_Left_Tab"
    }
 }
-
-local log = lgi.log.domain(plugin.id)
 
 function plugin.startup(awesomever, settings)
    alttab = require('alttab')
